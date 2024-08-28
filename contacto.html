@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contactos</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="barra-nav">
+    <div class="contenedor">
+      <a href="index.html">Inicio</a>
+      <a href="acercademi.html">Acerca De Mi</a>
+      <a href="proyectos.html">Proyectos</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="contactos">
+    <h1>¡Hablemos!</h1><br>
+    <p>Si tienes un proyecto en mente o simplemente quieres conectarte, no dudes en contactarme. 
+      <br>Estoy disponible para colaborar en nuevos desafíos y crear soluciones juntos.</p>
+      
+
+    <form id="contact-form">
+      <input type="text" id="name" placeholder="Nombre" required>
+      <input type="email" id="email" placeholder="Correo Electrónico" required>
+      <input type="tel" id="phone" placeholder="Teléfono" required>
+      <button type="submit">Añadir Contacto</button>
+    </form>
+
+    <table id="contacts-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Correo Electrónico</th>
+          <th>Teléfono</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí se agregarán las filas dinámicamente -->
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<script src="js/contacto.js"></script>
+
+<footer class="yo">&copy; Cristian G</footer>
+</body>
+</html>

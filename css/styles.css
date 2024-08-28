@@ -1,0 +1,408 @@
+:root {
+    --primario: #ffc107;  /* Color principal usado para resaltar elementos */
+    --negro: #010101;     /* Color negro usado para texto o fondo */
+    --blanco: #ffffff;    /* Color blanco usado para texto o fondo */
+    --secundario: #0097A7;/* Color secundario usado para elementos secundarios */
+    --gris: #757575;      /* Color gris usado para bordes o texto */
+    --rojo: #ff1700;
+    --fuentetitulos: "Josefin Sans", "Poppins", sans-serif; /* Fuente para los títulos */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif; /* Fuente por defecto para todo el sitio */
+}
+
+body {
+    font-size: 16px;
+    font-family: var(--fuentetitulos), Verdana, Arial, Helvetica, sans-serif; /* Fuente principal con respaldo */
+    margin: 0; /* Elimina el margen del body */
+
+}
+
+header {
+    display: flex; /* Flexbox para alinear elementos horizontalmente */
+    justify-content: space-between; /* Espacia los elementos dentro del header */
+    align-items: center; /* Alinea verticalmente los elementos del header */
+    padding: 10px 20px; /* Espacio interno alrededor del contenido del header */
+    background-color: transparent; /* Fondo transparente para que se vea el fondo de la página */
+    position: fixed; /* Posiciona el header en la parte superior de la página */
+    top: 0; /* Asegura que el header esté en la parte superior */
+    width: 100%; /* El header ocupa todo el ancho de la página */
+    z-index: 3; /* Asegura que el header esté por encima del fondo */
+}
+
+#gallery {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+#gallery img {
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nombre-empresa {
+    font-size: 24px; /* Tamaño de la fuente para el nombre de la empresa */
+    font-weight: bold; /* El texto del nombre de la empresa es negrita */
+    color: var(--blanco); /* El texto es blanco para ser visible sobre el fondo */
+}
+
+.barra-nav {
+    display: flex; /* Flexbox para alinear horizontalmente los enlaces de navegación */
+    justify-content: flex-end; /* Alinea los enlaces al lado derecho */
+}
+
+.barra-nav .contenedor a {
+    color: var(--blanco); /* Color de los enlaces, blanco para ser visibles */
+    padding: 10px 20px; /* Espacio interno alrededor de cada enlace */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    font-weight: bold; /* Los enlaces son en negrita */
+}
+
+.barra-nav .contenedor a:hover {
+    background-color: var(--primario); /* Cambia el fondo del enlace al pasar el ratón */
+    color: var(--blanco); /* El texto del enlace sigue siendo blanco al pasar el ratón */
+}
+
+
+/* Contenedor principal que engloba la imagen de fondo y el texto */
+.principal {
+    position: relative; /* Posiciona el contenedor de forma relativa para superponer elementos */
+    min-height: 100vh; /* El contenedor ocupa al menos toda la altura de la ventana */
+    display: flex; /* Flexbox para alinear el contenido centralmente */
+    align-items: center; /* Alinea verticalmente el contenido */
+    justify-content: center; /* Alinea horizontalmente el contenido */
+    overflow: hidden; /* Oculta cualquier contenido que se salga del contenedor */
+}
+
+/* Imagen de fondo */
+.fondo {
+    position: absolute; /* La imagen de fondo se posiciona de forma absoluta dentro del contenedor */
+    top: 0; /* La imagen empieza desde la parte superior del contenedor */
+    left: 0; /* La imagen empieza desde la parte izquierda del contenedor */
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    height: 100%; /* La imagen ocupa toda la altura del contenedor */
+    background: url('images/codecs.jpg') no-repeat top center; /* La imagen de fondo está centrada en la parte superior, sin repetirse */
+    background-size: cover; /* La imagen de fondo se ajusta para cubrir todo el contenedor */
+    background-attachment: fixed; /* La imagen de fondo permanece fija al hacer scroll */
+    z-index: 1; /* La imagen de fondo está detrás del texto */
+}
+
+/* Contenedor del texto */
+.container {
+    position: relative; /* Posiciona el texto de forma relativa dentro del contenedor principal */
+    z-index: 2; /* El texto está por encima de la imagen de fondo */
+    text-align: center; /* El texto está centrado horizontalmente */
+}
+
+/* Estilo y animación del texto */
+.container .text {
+    position: relative; /* Posiciona el texto de forma relativa para efectos de animación */
+    color: #fff000; /* Color amarillo para el texto principal */
+    font-size: 50px; /* Tamaño de la fuente para el texto */
+    font-weight: 600; /* El texto es negrita */
+}
+
+.container .text.first-text {
+    color: #FFF; /* Color blanco para el primer texto */
+}
+
+.text.sec-text:before {
+    content: ""; /* Inserta un contenido vacío para el efecto de animación */
+    position: absolute; /* Posiciona el contenido de forma absoluta para la animación */
+    top: 0; /* El contenido comienza desde la parte superior del texto */
+    left: 0; /* El contenido comienza desde la parte izquierda del texto */
+    height: 100%; /* El contenido ocupa toda la altura del texto */
+    width: 100%; /* El contenido ocupa todo el ancho del texto */
+    /* background-color: var(--blanco); Fondo blanco para el contenido */
+    border-left: 4px solid #FF5733; /* Borde izquierdo azul para el efecto de animación */
+    animation: animate 4s steps(12) infinite; /* Aplica la animación definida más abajo */
+}
+
+@keyframes animate {
+    40%, 60% {
+        left: calc(100% + 4px); /* Mueve el borde izquierdo fuera del texto */
+    }
+    100% {
+        left: 0%; /* Vuelve el borde izquierdo al inicio */
+    }
+}
+
+/* Estilo de los logos SVG */
+.logos {
+    position: absolute; /* Los logos se posicionan de forma absoluta en el contenedor principal */
+    bottom: 20px; /* Los logos están a 20px del borde inferior */
+    right: 25px; /* Los logos están a 25px del borde derecho */
+    display: flex; /* Flexbox para alinear los logos en una columna */
+    flex-direction: column; /* Los logos se alinean en una columna vertical */
+    align-items: flex-end; /* Los logos se alinean a la derecha */
+    z-index: 4; /* Los logos están por encima de todos los demás elementos */
+}
+
+.logos svg {
+    margin: 5px 0; /* Espacio vertical entre los logos */
+    width: 40px; /* Ancho de cada logo */
+    height: 40px; /* Altura de cada logo */
+}
+
+.logos svg path {
+    fill: var(--blanco); /* Color blanco para los logos */
+}
+
+.boton {
+    background-color: #26C6DA; /* Color de fondo del botón */
+    border: 3px solid #000; /* Borde negro para el botón */
+    padding: 10px 20px; /* Espacio interno del botón */
+    color: white; /* Color del texto del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+.perfil-mio{
+
+    background-color: var(--negro);
+    font-size: 20px;
+    color: var(--blanco);
+    display: flex;   
+}
+
+.acerca{
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 150px;
+    text-align: center;
+}
+
+/* Estilo para la tabla en la hoja de vida */
+/* Estilo para el cuadro que contiene dos columnas */
+.cuadro {
+  display: grid;              /* Usamos grid para crear dos columnas */
+  grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+  gap: 20px;                  /* Espacio entre columnas */
+  padding: 20px;              /* Relleno interno del cuadro */
+  border: 1px solid #ccc;     /* Borde del cuadro */
+  border-radius: 8px;         /* Bordes redondeados del cuadro */
+  background-color: #f9f9f9;  /* Color de fondo del cuadro */
+}
+
+/* Estilo para las columnas dentro del cuadro */
+.columna {
+  display: flex;               /* Utilizamos flexbox para organizar el contenido */
+  flex-direction: column;      /* Coloca los elementos en columna */
+  justify-content: flex-start; /* Justifica el contenido al principio de cada columna */
+}
+
+/* Asegura que el texto esté bien justificado */
+.cuadro p, .cuadro h4 {
+  text-align: justify;         /* Justifica el texto en ambos lados */
+  margin-bottom: 16px;         /* Espacio inferior entre párrafos y títulos */
+}
+
+/* Estilo adicional para títulos */
+.cuadro h4 {
+  font-weight: bold;           /* Títulos en negrita */
+  margin-top: 20px;            /* Espacio superior antes de cada título */
+}
+
+/* Elimina margen adicional alrededor del cuadro */
+.contenido {
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo para el título "HABILIDADES" */
+h3 {
+  font-size: 2em;             /* Incrementar el tamaño de la fuente */
+  text-align: center;         /* Centrar el texto */
+  background-color: #0000ff;  /* Fondo verde para hacerla destacar */
+  color: white;               /* Texto blanco */
+  padding: 10px;              /* Espaciado interno alrededor del texto */
+  border-radius: 5px;         /* Bordes redondeados */
+  margin-bottom: 30px;        /* Espacio inferior entre el título y la primera barra de progreso */
+  margin-left: auto;          /* Espaciado automático a la izquierda para centrar el título */
+  margin-right: auto;         /* Espaciado automático a la derecha para centrar el título */
+  max-width: 400px;           /* Establece un ancho máximo para el título */
+  margin-top: 40px;           
+}
+
+/* Contenedor de cada habilidad y barra de progreso */
+.progreso {
+  margin-bottom: 15px;        /* Espacio entre cada barra de progreso */
+  max-width: 1100px;          /* Ancho máximo de la barra de progreso */
+  position: relative;         /* Para posicionar el porcentaje final en relación al contenedor */
+  margin-left: auto;          /* Espaciado automático a la izquierda para centrar las barras */
+  margin-right: auto;         /* Espaciado automático a la derecha para centrar las barras */
+}
+
+/* Estilo del nombre de la habilidad */
+.skill {
+  font-weight: bold;          /* Hacer el texto en negrita */
+  margin-bottom: 5px;         /* Espacio entre el nombre de la habilidad y la barra */
+  display: block;             /* Asegurar que el nombre ocupe una línea completa */
+}
+
+/* Contenedor de la barra de progreso */
+.barra {
+  width: 100%;                /* La barra ocupa el ancho completo del contenedor */
+  background-color: #f3f3f3;  /* Color de fondo de la barra antes de llenarse */
+  border-radius: 25px;        /* Bordes redondeados para la barra */
+  overflow: hidden;           /* Oculta cualquier contenido que se salga de la barra */
+  position: relative;         /* Para manejar el contenido interno de manera más sencilla */
+}
+
+/* Estilo de la parte que se llena de la barra de progreso */
+.porcentaje {
+  height: 20px;               /* Altura de la barra de progreso */
+  background-color: #0000ff;  /* Color verde para la barra de progreso */
+  text-align: right;          /* Texto dentro de la barra alineado a la derecha */
+  padding-right: 10px;        /* Espacio entre el texto y el borde derecho de la barra */
+  line-height: 20px;          /* Alinea verticalmente el texto en el centro de la barra */
+  color: white;               /* Color del texto dentro de la barra */
+  border-radius: 25px 0 0 25px;  /* Bordes redondeados solo en la parte izquierda */
+  width: 0;                   /* Comienza en 0% para animación */
+  transition: width 2s ease-in-out; /* Animación de 2 segundos para que la barra se llene */
+}
+
+/* Pseudo-elemento para mostrar el porcentaje al final de la barra */
+.progreso::after {
+  content: attr(data-percent); /* Usa el valor de 'data-percent' para mostrar el porcentaje */
+  position: absolute;          /* Posiciona el porcentaje en relación al contenedor 'progreso' */
+  right: 10px;                 /* Ubica el porcentaje 10px desde el borde derecho */
+  top: 50%;                    /* Centra verticalmente el porcentaje */
+  transform: translateY(-50%); /* Ajusta para que el texto esté perfectamente centrado verticalmente */
+  color: black;                /* Color del texto del porcentaje */
+  font-weight: bold;           /* Hace que el porcentaje esté en negrita */
+}
+
+.proyecto {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .proyecto h1, .proyecto h2, .proyecto p {
+    margin: 0 auto;
+  }
+  
+  .proyecto h1 {
+    font-size: 3em;
+    margin-top: 20px;
+    color: var(--primario);
+  }
+  
+  .proyecto h2 {
+    font-size: 2em;
+    margin: 10px 0;
+  }
+  
+  .proyecto p {
+    font-size: 1.2em;
+    color: var(--gris);
+    line-height: 1.5;
+  }
+
+  .contactos {
+     min-height: calc(100vh - 40px); /* Ajusta el valor según la altura del header */
+    padding-bottom: 28px; /* Espacio extra para que el footer no cubra el contenido */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+  /* Estilo del formulario */
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 20px auto;
+    gap: 10px;
+}
+
+#contact-form input, #contact-form button {
+    padding: 10px;
+    font-size: 1em;
+}
+
+#contact-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#contact-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo de la tabla */
+#contacts-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#contacts-table th, #contacts-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#contacts-table th {
+    background-color: #f4f4f4;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+  
+footer {
+    text-align: center;
+    font-weight: bold;
+    background-color: var(--negro); /* Color de fondo para el footer */
+    color: var(--blanco); /* Color del texto en el footer */
+    padding: 10px 0;
+    width: 100%;
+    position: relative; /* Se asegura de que el footer esté en el flujo del documento */
+    bottom: 0;
+}
+.yo{
+
+    text-align: center;
+    font-weight: bold;
+}
+
+
+@media (min-width: 480px) {
+    /* Estilos para pantallas más grandes que 480px */
+}
+
+@media (min-width: 768px) {
+    /* Estilos para pantallas más grandes que 768px */
+}
+
+@media (min-width: 1140px) {
+    /* Estilos para pantallas más grandes que 1140px */
+}
+
+@media (min-width: 1400px) {
+    /* Estilos para pantallas más grandes que 1400px */
+}
+
